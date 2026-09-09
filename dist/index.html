@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <title>ATM — Coleção Artic 01</title>
+  <meta name="description" content="ATM WEAR. Engenharia pro frio, não pra multidão. Jaquetas puffer feitas para ambientes abaixo de zero e altitude." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="/assets/index-Bvq0WrsU.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-C_jWjmAq.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════ PRELOADER ══════════════════════════════ -->
+<div class="preloader" id="preloader">
+  <div class="preloader__grain"></div>
+  <div class="preloader__inner">
+    <div class="preloader__tag">
+      <svg class="tag-reveal" viewBox="0 0 1619 971" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <defs>
+          <linearGradient id="sprayGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%"   stop-color="#fff" stop-opacity="1" />
+            <stop offset="78%"  stop-color="#fff" stop-opacity="1" />
+            <stop offset="100%" stop-color="#fff" stop-opacity="0" />
+          </linearGradient>
+          <filter id="sprayBlur" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="9" />
+          </filter>
+          <mask id="tagMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1619" height="971">
+            <rect class="tag-wipe" x="-2300" y="-60" width="2300" height="1091" fill="url(#sprayGrad)" filter="url(#sprayBlur)" />
+          </mask>
+        </defs>
+        <image href="/logo.png" x="0" y="0" width="1619" height="971" mask="url(#tagMask)" />
+      </svg>
+    </div>
+    <div class="preloader__meta">
+      <span class="pl-line" data-pl>[ ATM UX INIT_01 ]</span>
+      <span class="pl-line" data-pl>[ PROTOCOLO: ALTITUDE 09_01 ]</span>
+    </div>
+    <div class="preloader__bar"><i></i></div>
+    <div class="preloader__count"><span id="plCount">000</span><em>%</em></div>
+  </div>
+  <div class="preloader__curtain"></div>
+</div>
+
+<!-- ══════════════════════════════ NAV ══════════════════════════════ -->
+<header class="nav" id="nav">
+  <a class="nav__logo" href="#top" aria-label="ATM início">
+    <img src="/logo.png" alt="ATM" />
+  </a>
+
+  <nav class="nav__links" aria-label="Principal">
+    <a href="#collection"><span>[ CATÁLOGO ]</span></a>
+    <a href="#collection"><span>[ PUFFERS ]</span></a>
+    <a href="#inventory"><span>[ BOTAS ]</span></a>
+    <a href="#inventory"><span>[ CATÁLOGO ]</span></a>
+    <a href="#cold"><span>[ PUFFERS ]</span></a>
+  </nav>
+
+  <div class="nav__tools">
+    <button class="nav__icon" aria-label="Buscar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+    </button>
+    <button class="nav__icon nav__cart" data-cart-open aria-label="Sacola">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9.5 8V6.5a2.5 2.5 0 0 1 5 0V8"/></svg>
+      <span class="nav__badge" data-cart-badge aria-hidden="true">0</span>
+    </button>
+    <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu__list">
+    <a href="#collection"><span>CATÁLOGO</span><em>01</em></a>
+    <a href="#collection"><span>PUFFERS</span><em>02</em></a>
+    <a href="#inventory"><span>BOTAS</span><em>03</em></a>
+    <a href="#cold"><span>OPS FRIO</span><em>04</em></a>
+    <a href="#manifesto"><span>MANIFESTO</span><em>05</em></a>
+  </div>
+  <div class="mobile-menu__foot">
+    <span>[ TEMP VISUAL: -30° ]</span>
+    <span>©2026 ATM WEAR</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ SACOLA ══════════════════════════════ -->
+<div class="cart" id="cart" aria-hidden="true">
+  <div class="cart__backdrop" data-cart-close></div>
+  <aside class="cart__panel" role="dialog" aria-modal="true" aria-label="Sacola">
+    <header class="cart__head">
+      <span class="tech">[ SACOLA ]</span>
+      <button type="button" class="cart__close" data-cart-close aria-label="Fechar sacola">FECHAR ✕</button>
+    </header>
+    <span class="tech cart__summary" data-cart-summary>NENHUM ITEM</span>
+    <div class="cart__list" data-cart-list></div>
+    <footer class="cart__foot">
+      <div class="cart__total">
+        <span class="tech">TOTAL</span>
+        <strong class="display" data-cart-total>R$&nbsp;0,00</strong>
+      </div>
+      <button type="button" class="cart__checkout" data-cart-checkout>FINALIZAR COMPRA</button>
+    </footer>
+  </aside>
+</div>
+
+<!-- Three.js frost / snow field -->
+<canvas id="frost" class="frost-canvas" aria-hidden="true"></canvas>
+
+<div id="smooth-wrapper">
+<div id="smooth-content">
+
+  <!-- ══════════════════════════════ HERO ══════════════════════════════ -->
+  <section class="hero" id="top">
+    <div class="hero__mountain" data-speed="0.85">
+      <img src="/montanha.png" alt="" />
+    </div>
+    <div class="hero__graffiti" data-hero-graffiti>
+      <img src="/ass.png" alt="" />
+    </div>
+
+    <div class="hero__figure" data-hero-figure>
+      <img data-fly src="/banner/banner-1.png" alt="Jaqueta puffer Coleção Artic 01" />
+    </div>
+
+    <div class="hero__grid">
+      <div class="hero__left">
+        <p class="tech-line" data-hero-line>
+          <span>[ SÉRIE: STASIS MK.I ]</span><span>[ SÉRIE ]</span>
+        </p>
+
+        <h1 class="hero__title display">
+          <span class="line"><span>COLEÇÃO</span></span>
+          <span class="line"><span>ARTIC 01<sup>™</sup></span></span>
+        </h1>
+
+        <div class="hero__opts">
+          <div class="opt" data-hero-line>
+            <span class="opt__label">TAMANHO</span>
+            <div class="opt__vals" data-pick="size">
+              <button class="is-on">S</button><button>M</button><button>L</button><button>XL</button>
+            </div>
+          </div>
+          <div class="opt" data-hero-line>
+            <span class="opt__label">COR</span>
+            <div class="opt__vals" data-pick="colour">
+              <button>BRANCO</button><button class="is-on">PRATA</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__cta" data-hero-line data-product
+             data-name="COLEÇÃO ARTIC 01" data-sub="JAQUETA PUFFER — PRATA / S"
+             data-price="899.99" data-img="/banner/banner-1.png"
+             data-fly-from="[data-hero-figure] img">
+          <button class="octagon" data-add aria-label="Adicionar ao carrinho">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <polygon class="octagon__ring" points="30,4 70,4 96,30 96,70 70,96 30,96 4,70 4,30" />
+            </svg>
+            <i class="octagon__arrow">↗</i>
+          </button>
+          <div class="hero__price">
+            <span>ADICIONAR</span>
+            <strong class="display">R$&nbsp;899,99</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__right">
+        <!-- filled and rotated by initThumbs() -->
+        <div class="hero__thumbs" data-thumbs>
+          <button class="thumb" type="button" aria-label="Ver este look"><img alt="" /></button>
+          <button class="thumb" type="button" aria-label="Ver este look"><img alt="" /></button>
+        </div>
+        <div class="hero__counter">
+          <span class="c-now">01</span><i class="c-rail"><b></b></i><span class="c-max">03</span>
+        </div>
+        <div class="hero__social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.9" r=".9" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.4l.4-2.9h-2.8V9.3c0-.8.2-1.4 1.4-1.4h1.5V5.3c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.1H8.1V14h2.4v7h3z"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 7.5c-.6.3-1.3.5-2 .6a3.4 3.4 0 0 0 1.5-1.9c-.7.4-1.4.7-2.2.9a3.4 3.4 0 0 0-5.9 3.1A9.7 9.7 0 0 1 4.5 6.5a3.4 3.4 0 0 0 1 4.6c-.5 0-1-.2-1.5-.4a3.4 3.4 0 0 0 2.7 3.4c-.5.1-1 .2-1.5.1a3.4 3.4 0 0 0 3.2 2.4A6.8 6.8 0 0 1 4 18.1a9.6 9.6 0 0 0 5.2 1.5c6.3 0 9.8-5.3 9.6-10 .7-.5 1.3-1.2 1.2-2.1z"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__scroll" data-hero-line>
+      <span>ROLE</span><i></i>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ NEW COLLECTION ══════════════════════════════ -->
+  <section class="collection" id="collection">
+    <div class="collection__head">
+      <h2 class="sec-title display" data-split>NOVA COLEÇÃO</h2>
+      <div class="collection__meta">
+        <ul class="tech-list" data-reveal>
+          <li>[ NOVA COLEÇÃO ]</li>
+          <li>[ SÉRIE_01 ]</li>
+          <li>[ PUFFERS ]</li>
+        </ul>
+        <ul class="tech-list" data-reveal>
+          <li>JAQUETAS PUFFER</li>
+          <li>SÉRIE GLOSS</li>
+          <li>LINHA FRIO EXTREMO</li>
+        </ul>
+      </div>
+      <button class="pill" data-reveal>FILTROS</button>
+    </div>
+
+    <div class="collection__grid">
+      <article class="feature" data-feature>
+        <!-- the drawn tag is injected here by initFeature() -->
+        <div class="feature__bg" data-feature-bg></div>
+        <img class="feature__img" src="/aurora-tm.png" alt="Puffer Aurora" />
+        <div class="feature__body" data-product
+             data-name="AURORA™" data-sub="JAQUETA PUFFER REFLETIVA" data-price="1999"
+             data-img="/aurora-tm.png" data-fly-from=".feature__img">
+          <h3 class="display">AURORA<sup>™</sup></h3>
+          <div class="feature__cta">
+            <button class="octagon octagon--sm" data-add aria-label="Adicionar Aurora ao carrinho">
+              <svg viewBox="0 0 100 100" aria-hidden="true"><polygon class="octagon__ring" points="30,4 70,4 96,30 96,70 70,96 30,96 4,70 4,30" /></svg>
+              <i class="octagon__arrow">↗</i>
+            </button>
+            <span>ADICIONAR<strong>R$&nbsp;1.999,00</strong></span>
+          </div>
+        </div>
+      </article>
+      <!-- product cards are injected into [data-grid] -->
+      <div class="collection__cards" data-grid="new"></div>
+    </div>
+    <div class="collection__row" data-grid="new2"></div>
+  </section>
+
+  <!-- ══════════════════════════════ MANIFESTO ══════════════════════════════ -->
+  <section class="manifesto" id="manifesto">
+    <div class="manifesto__bg" data-mf-bg><img src="/montanha.png" alt="" /></div>
+    <div class="manifesto__top">
+      <p class="tech-block" data-reveal>
+        A ATM NASCEU NAS<br />MONTANHAS. NÃO COMO<br />TENDÊNCIA, MAS COMO<br />RESPOSTA.
+        <span>[ PROTOCOLO: ALTITUDE 09_01 ]</span>
+      </p>
+      <p class="tech-block tech-block--r" data-reveal>PARA QUEM<br />ESCALA. NÃO PARA<br />A MULTIDÃO</p>
+    </div>
+    <h2 class="manifesto__title display">
+      <span class="line"><span>FEITO PRO FRIO</span></span>
+      <span class="line"><span>FEITO PRA ALTITUDE</span></span>
+      <span class="line"><span>FORJADO PRA DURAR</span></span>
+    </h2>
+    <div class="manifesto__foot"><span>[ SÉRIE: STASIS MK.I ]</span><span>©2026 ATM WEAR</span></div>
+  </section>
+
+  <!-- ══════════════════════════════ FOR USERS ══════════════════════════════ -->
+  <section class="users" id="users">
+    <div class="users__head">
+      <span class="tech" data-reveal>[ ATM UX INIT_01 ]</span>
+      <span class="tech" data-reveal>[ TEMP VISUAL: -30° ]</span>
+    </div>
+    <div class="users__title-row">
+      <h2 class="users__title display" data-split>PRA QUEM USA,<br />NÃO PRA OLHAR</h2>
+      <p class="users__note" data-reveal>INTERFACE CALIBRADA<br />PARA USO NO FRIO —<br />ZERO DISTRAÇÃO,<br />FOCO TOTAL NO<br />VOLUME DA PEÇA.</p>
+    </div>
+
+    <div class="panel" data-panel>
+      <div class="panel__head">
+        <span class="tech">[ ATIVO: MODO FRIO 01 ]&nbsp;&nbsp;[ SÉRIE ]</span>
+        <ul class="tech-list tech-list--r">
+          <li>[NOVA COLEÇÃO]</li><li>[SÉRIE_01]</li><li>[PUFFERS]</li>
+        </ul>
+      </div>
+
+      <div class="panel__barcode">
+        <div class="barcode" aria-hidden="true"></div>
+        <span class="tech">©2026 ATM WEAR</span>
+      </div>
+
+      <!-- the three figures are the slides: they physically move between the
+           side and centre positions, they are not swapped by src -->
+      <div class="trio" data-trio tabindex="0" role="group" aria-roledescription="carousel" aria-label="Unidades de campo">
+        <figure class="trio__item" data-slide="2"><img src="/carrossel-3.png" alt="Unidade 03 — protocolo shell" /></figure>
+        <figure class="trio__item" data-slide="0"><img src="/carrossel-1.png" alt="Unidade 01 — puffer stasis" /></figure>
+        <figure class="trio__item" data-slide="1"><img src="/carrossel-2.png" alt="Unidade 02 — volume" /></figure>
+      </div>
+
+      <div class="panel__claims display">
+        <span class="claim claim--a" data-claim="a">NOT FOR<br />MANY FOR THE&nbsp;&nbsp;FEW</span>
+        <span class="claim claim--b" data-claim="b">ENGINEERED FOR COLD<br />NOT FOR CROWD</span>
+      </div>
+
+      <div class="trio__meta">
+        <span class="tech" data-trio-index>01</span>
+        <p class="tech" data-trio-caption>UNIT 01 — STASIS PUFFER / FROST BLUE / SUB-ZERO SHELL</p>
+        <div class="trio__dots" data-trio-dots></div>
+      </div>
+
+      <p class="panel__copy" data-reveal>
+        NÃO SEGUIMOS MODA. FAZEMOS EQUIPAMENTO PARA FRIO, ALTITUDE E FUNÇÃO ABSOLUTA. CADA PAINEL,
+        COSTURA E VOLUME É CALCULADO PARA DESEMPENHO, NÃO PARA APARÊNCIA. NOSSAS PEÇAS AGUENTAM
+        AMBIENTES ABAIXO DE ZERO, VENTO FORTE E O SILÊNCIO QUE SÓ EXISTE ACIMA DA LINHA DAS NUVENS. PROJETAMOS PARA
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ COLD / MOLETON ══════════════════════════════ -->
+  <section class="cold" id="cold">
+    <div class="cold__inner">
+      <h2 class="cold__title display">
+        <span class="line"><span>QUANDO O FRIO</span></span>
+        <span class="line"><span>CHEGA, TODO O</span></span>
+        <span class="line"><span>RESTO SILENCIA</span></span>
+      </h2>
+      <p class="cold__note tech" data-reveal>O FRIO NÃO<br />DÓI. ELE REDUZ<br />O QUE VOCÊ SENTE</p>
+
+      <ul class="cold__specs tech" data-reveal>
+        <li>[TEMPERATURA]</li><li>[CAI RÁPIDO AQUI]</li><li>[TEMPO DE REAÇÃO]</li><li>[FICA SILENCIOSO]</li>
+      </ul>
+
+      <div class="cold__jacket" data-cold-jacket>
+        <img data-fly src="/moleton.png" alt="Jaqueta puffer azul gelo" />
+      </div>
+      <div class="cold__tag" data-cold-tag><img src="/logo.png" alt="" /></div>
+
+      <div class="cold__cta" data-reveal data-product
+           data-name="ICEFIELD BLUE" data-sub="JAQUETA PUFFER TECH" data-price="999.99"
+           data-img="/moleton.png" data-fly-from="[data-cold-jacket] img">
+        <button class="octagon" data-add aria-label="Adicionar ao carrinho">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><polygon class="octagon__ring" points="30,4 70,4 96,30 96,70 70,96 30,96 4,70 4,30" /></svg>
+          <i class="octagon__arrow">↗</i>
+        </button>
+        <div class="hero__price"><span>ADICIONAR</span><strong class="display">R$&nbsp;999,99</strong></div>
+      </div>
+
+      <h3 class="cold__sub display">
+        <span class="line"><span>VOCÊ NÃO SENTE</span></span>
+        <span class="line"><span>FRIO, SENTE MENOS</span></span>
+      </h3>
+      <span class="cold__foot tech">[ ATIVO: MODO FRIO 01 ]&nbsp;&nbsp;[ SÉRIE ]</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ INVENTORY ══════════════════════════════ -->
+  <section class="inventory" id="inventory">
+    <div class="inventory__head">
+      <h2 class="sec-title display" data-split>FRIO EXTREMO</h2>
+      <button class="pill" data-reveal>FILTROS</button>
+    </div>
+    <div class="inventory__grid" data-grid="ops"></div>
+  </section>
+
+  <!-- ══════════════════════════════ CARD DESIGN ══════════════════════════════ -->
+  <section class="cardlab" id="cardlab">
+    <div class="cardlab__head">
+      <span class="tech" data-reveal>[ PÁGINA INICIAL ]</span>
+      <span class="tech" data-reveal>[ DESKTOP: 1920 PX ]</span>
+    </div>
+
+    <!-- UNIT ANATOMY: callouts draw out to points on the garment on the way in,
+         and retract on the way out -->
+    <div class="anatomy" data-anatomy>
+      <div class="anatomy__head">
+        <span class="tech" data-reveal>[ ANATOMIA DA PEÇA ]</span>
+        <span class="tech" data-reveal>[ FICHA DE CAMPO 01 ]</span>
+      </div>
+
+      <div class="anatomy__stage">
+        <div class="anatomy__frame">
+        <img class="anatomy__unit" src="/product/cut/9.png" alt="Jaqueta puffer unit azul frost" />
+
+        <svg class="anatomy__lines" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <g class="anatomy__leads" fill="none" stroke="currentColor" stroke-width="1.4" vector-effect="non-scaling-stroke">
+            <path d="M392,168 H796" />
+            <path d="M1208,352 H812" />
+            <path d="M392,536 H742" />
+            <path d="M1208,752 H897" />
+          </g>
+          <g class="anatomy__dots" fill="currentColor">
+            <circle cx="800" cy="168" r="4" />
+            <circle cx="808" cy="352" r="4" />
+            <circle cx="738" cy="536" r="4" />
+            <circle cx="901" cy="752" r="4" />
+          </g>
+          <g class="anatomy__ticks" stroke="currentColor" stroke-width="1.4" vector-effect="non-scaling-stroke">
+            <path d="M392,152 V184" />
+            <path d="M1208,336 V368" />
+            <path d="M392,520 V552" />
+            <path d="M1208,736 V768" />
+          </g>
+        </svg>
+        </div>
+
+        <div class="anatomy__calls">
+          <span class="anatomy__call anatomy__call--l" style="--y: 18.7%" data-call>
+            <b>01 / CAPUZ</b><em>GOLA STORM — TRAVA VENTO</em>
+          </span>
+          <span class="anatomy__call anatomy__call--r" style="--y: 39.1%" data-call>
+            <b>02 / SHELL</b><em>LAMINADO 3L — 20K/20K</em>
+          </span>
+          <span class="anatomy__call anatomy__call--l" style="--y: 59.6%" data-call>
+            <b>03 / ENCHIMENTO</b><em>PLUMA 800 — CAIXA BAFFLE</em>
+          </span>
+          <span class="anatomy__call anatomy__call--r" style="--y: 83.6%" data-call>
+            <b>04 / PUNHO</b><em>POLAINA SELADA — SEM FRESTA</em>
+          </span>
+        </div>
+      </div>
+
+      <div class="anatomy__foot">
+        <span class="tech">[ TESTADO: -30&#176;C / 40KT ]</span>
+        <div class="anatomy__scale" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <span class="tech">[ MASSA 1,24KG ]</span>
+      </div>
+    </div>
+
+
+    <div class="cardlab__body">
+      <div class="cardlab__pair" data-grid="lab"></div>
+      <div class="cardlab__note">
+        <p class="tech" data-reveal>O CARD ENQUADRA A<br />SILHUETA COMO OBJETO<br />INDEPENDENTE — TRATADA<br />MAIS COMO EQUIPAMENTO<br />QUE COMO MODA.</p>
+        <div class="cardlab__tag" data-lab-tag><img src="/logo.png" alt="" /></div>
+      </div>
+    </div>
+
+    <div class="cardlab__big">
+      <p class="tech" data-reveal>ENQUADRAMENTO LIMPO,<br />HIERARQUIA CLARA E FOCO<br />NA SILHUETA COMO SINAL<br />VISUAL PRINCIPAL.</p>
+      <h2 class="display" data-split>FORJADO<br />PARA<br />DURAR</h2>
+      <div class="cardlab__solo" data-grid="lab2"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
+  <footer class="foot">
+    <div class="foot__marquee" data-marquee>
+      <div class="foot__track">
+        <span class="display">ATM WEAR</span><i>◆</i><span class="display">ENGENHARIA PRO FRIO</span><i>◆</i>
+        <span class="display">NÃO PRA MULTIDÃO</span><i>◆</i><span class="display">ALTITUDE 09_01</span><i>◆</i>
+        <span class="display">ATM WEAR</span><i>◆</i><span class="display">ENGENHARIA PRO FRIO</span><i>◆</i>
+        <span class="display">NÃO PRA MULTIDÃO</span><i>◆</i><span class="display">ALTITUDE 09_01</span><i>◆</i>
+      </div>
+    </div>
+    <div class="foot__grid">
+      <div>
+        <img class="foot__logo" src="/logo.png" alt="ATM" />
+        <p class="tech">FEITO PRO FRIO.<br />FEITO PRA ALTITUDE.<br />FORJADO PRA DURAR.</p>
+      </div>
+      <ul class="tech"><li>[ CATÁLOGO ]</li><li>[ PUFFERS ]</li><li>[ BOTAS ]</li><li>[ ACESSÓRIOS ]</li></ul>
+      <ul class="tech"><li>[ ENVIO ]</li><li>[ TROCAS ]</li><li>[ GUIA DE TAMANHOS ]</li><li>[ CONTATO ]</li></ul>
+      <div class="foot__end">
+        <span class="tech">©2026 ATM WEAR<br />TODOS OS DIREITOS RESERVADOS</span>
+        <div class="barcode barcode--sm" aria-hidden="true"></div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</div>
+
+</body>
+</html>
